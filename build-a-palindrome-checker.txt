@@ -1,0 +1,101 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Palindrome Checker</title>
+</head>
+<body>
+    <h1>Palindrome Checker</h1>
+    <input id="text-input" type="text" placeholder="Enter text here">
+    <button id="check-btn">Check</button>
+    <p id="result"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+** end of index.html **
+
+** start of styles.css **
+
+
+
+.center-text {
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+
+.box {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+** end of styles.css **
+
+** start of script.js **
+
+const input = document.getElementById('text-input');
+const checkBtn = document.getElementById('check-btn');
+const result = document.getElementById('result');
+
+checkBtn.addEventListener('click', () => {
+    let text = input.value;
+
+    if (text.trim() === "") {
+        alert("Please input a value.");
+        return;
+    }
+
+    let cleaned = text.toLowerCase().replace(/[^a-z0-9]/g, "");
+    let reversed = cleaned.split('').reverse().join('');
+
+    if (cleaned === reversed) {
+        result.textContent = `${text} is a palindrome.`;
+    } else {
+        result.textContent = `${text} is not a palindrome.`;
+    }
+});
+
+
+** end of script.js **
+
